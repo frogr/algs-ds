@@ -49,7 +49,7 @@ same([1, 2, 1], [4, 4, 1]) // false
 function validAnagram(str1, str2) {
    // check length and if its different, false
   if (str1.length !== str2.length) {
-    return console.log(false);
+    return false;
   }
   // collect frequency of both strings
   let frequencyChecker = {}
@@ -70,19 +70,20 @@ function validAnagram(str1, str2) {
       frequencyChecker2[char] = 1;
     }
   }
-  console.log("frq checker 1: ", frequencyChecker)
-  console.log("frq checker 2: ", frequencyChecker2)
   // check to make sure frequencies are the same
   for (let key in frequencyChecker) {
     if (!(key in frequencyChecker2)) {
-      return console.log(false)
+      return false
+    } else if (frequencyChecker[key] != frequencyChecker2[key]) {
+      return false;
     }
   }
   // return true 
-  return console.log(true);
+  return true;
 }
 console.log("ANAGRAMS")
 
 validAnagram("alexa", "axela") // true
 validAnagram("axela", "austin") // false
 validAnagram("nitsua", "austin") // true
+validAnagram("anagrammm", "nagaraaam") // false
