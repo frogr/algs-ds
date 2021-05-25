@@ -41,3 +41,48 @@ function same(arr1, arr2) {
 same([1, 2, 3], [1, 9]) // false
 same([1, 2, 2, 5, 3], [1, 4, 4, 25, 9]) // true 
 same([1, 2, 1], [4, 4, 1]) // false
+
+// anagram problem
+
+// given two strings, check if the second one is an anagram of the first one
+
+function validAnagram(str1, str2) {
+   // check length and if its different, false
+  if (str1.length !== str2.length) {
+    return console.log(false);
+  }
+  // collect frequency of both strings
+  let frequencyChecker = {}
+  let frequencyChecker2 = {}
+  for (let value in str1) {
+    let char = str1[value]
+    if (frequencyChecker[char] > 0) {
+      frequencyChecker[char]++;
+    } else {
+      frequencyChecker[char] = 1;
+    }
+  }
+  for (let value in str2) {
+    let char = str2[value]
+    if (frequencyChecker2[char] > 0) {
+      frequencyChecker2[char]++;
+    } else {
+      frequencyChecker2[char] = 1;
+    }
+  }
+  console.log("frq checker 1: ", frequencyChecker)
+  console.log("frq checker 2: ", frequencyChecker2)
+  // check to make sure frequencies are the same
+  for (let key in frequencyChecker) {
+    if (!(key in frequencyChecker2)) {
+      return console.log(false)
+    }
+  }
+  // return true 
+  return console.log(true);
+}
+console.log("ANAGRAMS")
+
+validAnagram("alexa", "axela") // true
+validAnagram("axela", "austin") // false
+validAnagram("nitsua", "austin") // true
