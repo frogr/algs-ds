@@ -71,10 +71,10 @@ function validAnagram(str1, str2) {
     }
   }
   // check to make sure frequencies are the same
-  for (let key in frequencyChecker) {
-    if (!(key in frequencyChecker2)) {
+  for (let value in frequencyChecker) {
+    if (!(value in frequencyChecker2)) {
       return false
-    } else if (frequencyChecker[key] != frequencyChecker2[key]) {
+    } else if (frequencyChecker[value] != frequencyChecker2[value]) {
       return false;
     }
   }
